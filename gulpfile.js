@@ -14,7 +14,8 @@ gulp.task('js', function() {
 		'bower_components/angular-route/angular-route.js',
 		'bower_components/angular-bootstrap/ui-bootstrap.js',
 		'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-		'bower_components/angular-resource/angular-resource.min.js'
+		'bower_components/angular-resource/angular-resource.min.js',
+		'bower_components/angular-ui-router/release/angular-ui-router.min.js'
 		])
 		.pipe(concat('libs.js'))
 		.pipe(gulp.dest('builds/dev'));

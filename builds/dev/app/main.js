@@ -3,14 +3,18 @@
 	'use strict';
 
 	angular
-		.module('loft', ['ngRoute', 'ngResource', 'Loft.User', 'Loft.Users'])
+		.module('loft', ['ui.router', 'ngResource', 'Loft.User', 'Loft.Users'])
 		.config(HTTPConfig)
 		.config(Config);
 
 		// ngInject
-		function Config($routeProvider) {
-			$routeProvider
-				.otherwise({ redirectTo: '/' })
+		function Config($stateProvider, $urlRouterProvider) {
+			$urlRouterProvider.otherwise("/");
+			$stateProvider
+				.state('main', {
+					url: '/',
+					templateUrl: 'app/main/index.html'
+				})
 		};
 
 		// ngInject

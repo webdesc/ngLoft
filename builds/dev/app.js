@@ -3,14 +3,18 @@
 	'use strict';
 
 	angular
-		.module('loft', ['ngRoute', 'ngResource', 'Loft.User', 'Loft.Users'])
+		.module('loft', ['ui.router', 'ngResource', 'Loft.User', 'Loft.Users'])
 		.config(HTTPConfig)
 		.config(Config);
 
 		// ngInject
-		function Config($routeProvider) {
-			$routeProvider
-				.otherwise({ redirectTo: '/' })
+		function Config($stateProvider, $urlRouterProvider) {
+			$urlRouterProvider.otherwise("/");
+			$stateProvider
+				.state('main', {
+					url: '/',
+					templateUrl: 'app/main/index.html'
+				})
 		};
 
 		// ngInject
@@ -35,9 +39,10 @@
 			console.log('UserController');
 		}
 
-		function UserConfig($routeProvider) {
-			$routeProvider
-				.when('/user', {
+		function UserConfig($stateProvider, $urlRouterProvider) {
+			$stateProvider
+				.state('user', {
+					url: '/user',
 					templateUrl: 'app/user/index.html',
 					controller: 'UserCtrl',
 					controllerAs: 'uc'
@@ -75,9 +80,10 @@
 		};
 
 		// ngInject
-		function UsersConfig($routeProvider) {
-			$routeProvider
-				.when('/users', {
+		function UsersConfig($stateProvider, $urlRouterProvider) {
+			$stateProvider
+				.state('users', {
+					url: '/users',
 					templateUrl: 'app/users/index.html',
 					controller: 'UsersCtrl',
 					controllerAs: 'usr'

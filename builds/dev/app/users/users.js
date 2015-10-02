@@ -28,9 +28,10 @@
 		};
 
 		// ngInject
-		function UsersConfig($routeProvider) {
-			$routeProvider
-				.when('/users', {
+		function UsersConfig($stateProvider, $urlRouterProvider) {
+			$stateProvider
+				.state('users', {
+					url: '/users',
 					templateUrl: 'app/users/index.html',
 					controller: 'UsersCtrl',
 					controllerAs: 'usr'

@@ -11,9 +11,10 @@
 			console.log('UserController');
 		}
 
-		function UserConfig($routeProvider) {
-			$routeProvider
-				.when('/user', {
+		function UserConfig($stateProvider, $urlRouterProvider) {
+			$stateProvider
+				.state('user', {
+					url: '/user',
 					templateUrl: 'app/user/index.html',
 					controller: 'UserCtrl',
 					controllerAs: 'uc'
