@@ -1,0 +1,23 @@
+{
+  "name": "ngLoft",
+  "version": "1.0.0",
+  "description": "Fitness tracker",
+  "scripts": {
+    "start": "gulp",
+    "production": "gulp production",
+    "test": ""
+  },
+  "dependencies": {
+    "browser-sync": "^2.9.6",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-scss": "^1.3.1",
+    "gulp-uglify": "^1.4.1",
+    "jasmine": "^2.3.2",
+    "jasmine-core": "^2.3.4",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-junit-reporter": "^0.3.5"
+  }
+}
