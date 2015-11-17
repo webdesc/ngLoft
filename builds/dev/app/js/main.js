@@ -327,11 +327,23 @@
 					controller: 'ExercisesCtrl',
 					controllerAs: 'exr'
 				})
+				.state('exercise-detail', {
+					url: '/exercises/:id',
+					templateUrl: 'app/templates/tracker/views/exercise-detail.html',
+					controller: 'ExercisesCtrl',
+					controllerAs: 'exr'
+				})
 				.state('workout', {
 					url: '/workout/',
 					templateUrl: 'app/templates/tracker/views/workout.html',
 					controller: 'WorkoutCtrl',
 					controllerAs: 'trk'
+				})
+				.state('training-detail', {
+					url: '/workout/training/:id',
+					templateUrl: 'app/templates/tracker/views/training-detail.html',
+					controller: 'TrainingDetailCtrl',
+					controllerAs: 'tdl'
 				});
 		}
 		TrackerConfig.$inject = ["$stateProvider", "$urlRouterProvider"];
@@ -343,8 +355,10 @@
 
 	angular.module('Loft.Tracker')
 		.controller('TrackerCtrl', TrackerController)
+		.controller('TrainingDetailCtrl', TrainingDetailController)
 		.controller('WorkoutCtrl', WorkoutController)
-		.controller('ExercisesCtrl', ExercisesController);
+		.controller('ExercisesCtrl', ExercisesController)
+		.controller('ExerciseDetailCtrl', ExerciseDetailController);
 
 		// ngInject
 		function TrackerController($scope, Tracker) {
@@ -360,9 +374,21 @@
 		TrackerController.$inject = ["$scope", "Tracker"];;
 
 		// ngInject
+		function TrainingDetailController($scope, Tracker, $stateParams) {
+			var that = this;
+			that.training = Tracker.getTraining();
+			that.training.$loaded(function(_trainingList) {
+				that.training_detail = _trainingList.$getRecord($stateParams.id);
+			});
+			that.training.$watch(function(_trainingList) {
+				that.training_detail = _trainingList;
+			});
+		}
+		TrainingDetailController.$inject = ["$scope", "Tracker", "$stateParams"];;
+
+		// ngInject
 		function WorkoutController($scope, Tracker) {
 			$scope.exercisesCount = [0];
-			console.log($scope.exercisesCount.length);
 			$scope.addExercises = function() {
 				var cnt = $scope.exercisesCount.length;
 				$scope.exercisesCount.push(cnt);
@@ -385,6 +411,19 @@
 			});
 		}
 		ExercisesController.$inject = ["$scope", "GetExercisesList"];;
+
+		// ngInject
+		function ExerciseDetailController($scope, GetExercisesList) {
+			var that = this;
+			that.exercises = GetExercisesList.getAllExercises();
+			that.exercises.$loaded(function(_exercisesList) {
+				that.exercise_detail = _exercisesList.$getRecord($scope.exercise.exercisesID);
+			});
+			that.exercises.$watch(function(_exercisesList) {
+				that.exercise_detail = _exercisesList;
+			});
+		}
+		ExerciseDetailController.$inject = ["$scope", "GetExercisesList"];;
 
 })();
 ;(function() {

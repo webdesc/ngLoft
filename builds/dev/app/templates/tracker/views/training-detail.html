@@ -1,0 +1,35 @@
+<div class="row">
+	
+	<div class="col-md-12">
+
+		<h1>{{tdl.training_detail.name}}</h1>
+		<div class="alert alert-info" role="alert">{{tdl.training_detail.description}}</div>
+
+		<div class="panel panel-default" ng-repeat="(key, exercise) in tdl.training_detail.exercises">
+		 	<div class="panel-heading" ng-controller="ExerciseDetailCtrl as exdtl"><a ui-sref="exercise-detail({id: exercise.exercisesID})">{{exdtl.exercise_detail.name}}</a></div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<td colspan="3"></td>
+						</tr>
+						<tr>
+							<th>approaches</th>
+							<th>repeat</th>
+							<th>leadtime</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{exercise.approaches}}</td>
+							<td>{{exercise.repeat}}</td>
+							<td>{{exercise.leadtime}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+</div>

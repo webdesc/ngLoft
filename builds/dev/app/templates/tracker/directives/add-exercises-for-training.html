@@ -12,11 +12,11 @@
 	      <input name="approaches" ng-model="credentails.exercises[index].approaches" type="range" min="1" max="50" value="0" step="1" class="form-control" id="approaches">
 	    </div>
 		<div class="col-md-2 col-sm-4">
-	      <input type="checkbox"> <label>repeat:</label> {{credentails.exercises[index].repeat||0}}
+	      <label>repeat:</label> {{credentails.exercises[index].repeat||0}}
 	      <input name="repeat" ng-model="credentails.exercises[index].repeat" type="range" min="1" max="10" value="0" step="1" class="form-control" id="repeat">
 	    </div>
 		<div class="col-md-2 col-sm-4">
-	      <input type="checkbox"> <label>time (min):</label>
+	      <label>time (min):</label>
 	      {{credentails.exercises[index].leadtime||0}}
 	      <input name="leadtime" ng-model="credentails.exercises[index].leadtime" type="range" min="1" max="60"  value="0" step="1" class="form-control" id="leadtime">
 	    </div>
