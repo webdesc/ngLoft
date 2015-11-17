@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <a href="/" class="navbar-brand">Loft tracker</a>
+      <a ui-sref="home" class="navbar-brand">Loft tracker</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -17,13 +17,14 @@
       </ul>
 
       <div ng-controller="ModalCtrl" ng-show="!currentUser" class="btn-group pull-right" role="group" aria-label="...">
-        <button type="button" class="btn btn-default" ng-click="open()">Sing in</button>
-        <button type="button" class="btn btn-default">Sign up</button>
+        <a class="btn btn-default" ng-click="open('modalAuth.html')">Sing in</a>
+        <a ui-sref="registration" class="btn btn-default">Sign up</a>
       </div>
 
       <div ng-show="currentUser" class="auth-box pull-right">
         <span>
-          Welcome, <a href=""><strong>{{currentUser}}</strong></a>!
+          Welcome, <a href=""><strong>{{currentUser}}</strong></a>! 
+          [<a href="" ng-click="logout()">logout</a>]
         </span>
       </div>
 
@@ -60,7 +61,7 @@
             <input type="checkbox"> Check me out
           </label>
         </div>
-        <button type="submit" class="btn btn-default">Я вхожу</button>
+        <button type="submit" class="btn btn-default">Sign in</button>
         <!--pre>{{ formAuth | json }}</pre-->
       </form>
     </div>

@@ -1,0 +1,68 @@
+<h1>Registration</h1>
+
+<form name="formReg" novalidate ng-submit="registration(credentails)">
+
+  <div info-message></div>
+
+  <div ng-show="showRegForm">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <input type="file" id="exampleInputFile">
+          <p class="help-block">Example block-level help text here.</p>
+        </div>
+      </div>
+      <div class="col-md-8">
+      <!-- <pre>{{credentails|json}}</pre> -->
+          <div class="form-group" ng-class="{'has-error': formReg.first_name.$invalid && formReg.$submitted}">
+            <label>First name</label>
+            <input name="first_name" type="text" required class="form-control" ng-model="credentails.first_name" placeholder="first_name">
+          </div>
+          <div class="form-group" ng-class="{'has-error': formReg.last_name.$invalid && formReg.$submitted}">
+            <label>Last name</label>
+            <input name="last_name" type="text" class="form-control" ng-model="credentails.last_name" placeholder="last_name">
+          </div>
+          <div class="form-group" ng-class="{'has-error': formReg.email.$invalid && formReg.$submitted}">
+            <label>E-mail</label>
+            <input name="email" type="email" required class="form-control" ng-model="credentails.email" placeholder="email">
+          </div>
+          <div class="form-group" ng-class="{'has-error': formReg.phone.$invalid && formReg.$submitted}">
+            <label>Phone</label>
+            <input name="phone" type="text" class="form-control" ng-model="credentails.phone" placeholder="phone">
+          </div>
+          <div class="form-group" ng-class="{'has-error': formReg.password.$invalid && formReg.$submitted}">
+            <label>Password</label>
+            <input name="password" type="password" required class="form-control" ng-model="credentails.password" placeholder="password">
+          </div>
+          <div class="form-group" ng-class="{'has-error': formReg.gender.$invalid && formReg.$submitted}">
+            <label>Gender</label>
+            <select class="form-control" name="gender" ng-model="credentails.gender">
+              <option selected value="">-- select gender --</option>
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </select>
+          </div>
+          <div class="form-group" ng-class="{'has-error': formReg.age.$invalid && formReg.$submitted}">
+            <label>Age</label>
+            <input name="age" type="text" class="form-control" ng-model="credentails.age" placeholder="age">
+          </div>
+          <div class="form-group" ng-class="{'has-error': formReg.growth.$invalid && formReg.$submitted}">
+            <label>Growth</label>
+            <input name="growth" type="text" class="form-control" ng-model="credentails.growth" placeholder="growth">
+          </div>
+          <div class="form-group" ng-class="{'has-error': formReg.weight.$invalid && formReg.$submitted}">
+            <label>Weight</label>
+            <input name="weight" type="text" class="form-control" ng-model="credentails.weight" placeholder="weight">
+          </div>
+          <div class="form-group" ng-class="{'has-error': formReg.birthday.$invalid && formReg.$submitted}">
+            <label>Birthday</label>
+            <input class="form-control" type="text" date-time view="date" ng-model="credentails.birthday" name="birthday" id="birthday" auto-close="true" ng-model="credentails.birthday" format="DD MMMM YYYY" min-view="date">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Sing up</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</form>

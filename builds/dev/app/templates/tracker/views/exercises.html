@@ -1,0 +1,21 @@
+<h1>Упражнения</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Название</th>
+			<th>Уровень сложности</th>
+			<th>Оборудование</th>
+			<th>Целевые мышцы</th>
+			<th>Тип упражнения</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="exercise in exr.exercises">
+			<td>{{exercise.name}}</td>
+			<td>{{exercise.difficulty_level}}</td>
+			<td>{{exercise.type_of_equipment}}</td>
+			<td>{{exercise.targeted_muscles}}</td>
+			<td>{{exercise.type_of_exercise}}</td>
+		</tr>
+	</tbody>
+</table>

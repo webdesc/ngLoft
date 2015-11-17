@@ -1,0 +1,24 @@
+<div class="well well-sm form-group" ng-repeat="index in exercisesCount">
+	<div class="row">
+		<div class="col-md-6">
+	      <label>Сhoose exercises</label>
+	      <select ng-controller="ExercisesCtrl as exr" name="title" ng-model="credentails.exercises[index].exercisesID" class="form-control">
+	      	<option value="">---</option>
+	      	<option ng-repeat="(key, exercise) in exr.list" value="{{key}}">{{exercise.name}}</option>
+	      </select>
+			</div>
+		<div class="col-md-2 col-sm-4">
+	      <label>approaches:</label> {{credentails.exercises[index].approaches||0}}
+	      <input name="approaches" ng-model="credentails.exercises[index].approaches" type="range" min="1" max="50" value="0" step="1" class="form-control" id="approaches">
+	    </div>
+		<div class="col-md-2 col-sm-4">
+	      <input type="checkbox"> <label>repeat:</label> {{credentails.exercises[index].repeat||0}}
+	      <input name="repeat" ng-model="credentails.exercises[index].repeat" type="range" min="1" max="10" value="0" step="1" class="form-control" id="repeat">
+	    </div>
+		<div class="col-md-2 col-sm-4">
+	      <input type="checkbox"> <label>time (min):</label>
+	      {{credentails.exercises[index].leadtime||0}}
+	      <input name="leadtime" ng-model="credentails.exercises[index].leadtime" type="range" min="1" max="60"  value="0" step="1" class="form-control" id="leadtime">
+	    </div>
+	</div>
+</div>

@@ -11,6 +11,7 @@
 			console.log('UserController');
 		}
 
+		// ngInject
 		function UserConfig($stateProvider, $urlRouterProvider) {
 			$stateProvider
 				.state('user', {

@@ -1,0 +1,9 @@
+{
+  "firebase": "loft-tracker",
+  "public": "builds/dev",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

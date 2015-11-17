@@ -1,59 +1,14 @@
 'use strict';
 
 var gulp = require('gulp'),
+	wiredep = require('wiredep').stream,
 	concat = require('gulp-concat'),
 	sass = require('gulp-scss'),
 	uglify = require('gulp-uglify'),
 	ngAnnotate = require('gulp-ng-annotate'),
-	browserSync = require('browser-sync').create(),
+	browserSync = require('browser-sync'),
 	reload = browserSync.reload;
 
-gulp.task('js', function() {
-	gulp.src([
-		'bower_components/angular/angular.js',
-		'bower_components/angular-route/angular-route.js',
-		'bower_components/angular-bootstrap/ui-bootstrap.js',
-		'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-		'bower_components/angular-resource/angular-resource.min.js',
-		'bower_components/angular-ui-router/release/angular-ui-router.min.js'
-		])
-		.pipe(concat('libs.js'))
-		.pipe(gulp.dest('builds/dev'));
-	gulp.src([
-		'builds/dev/app/**/*.js',
-		'!builds/dev/app/**/*_test.js'
-		])
-		.pipe(concat('app.js'))
-		.pipe(gulp.dest('builds/dev'))
-		.pipe(reload({stream: true}));
-});
-
-gulp.task('css', function() {
-	gulp.src([
-		'bower_components/bootstrap/dist/css/bootstrap.css',
-		'bower_components/bootstrap/dist/css/bootstrap-theme.css',
-		'bower_components/angular-bootstrap/ui-bootstrap-csp.css',
-		'bower_components/angular/angular-csp.css'
-		])
-		.pipe(concat('theme.css'))
-		.pipe(gulp.dest('builds/dev'));
-	gulp.src('builds/dev/app/**/*.scss')
-		.pipe(sass())
-		.pipe(concat('app.css'))
-		.pipe(gulp.dest('builds/dev'))
-		.pipe(reload({stream: true}));
-});
-
-gulp.task('html', function() {
-	gulp.src('builds/dev/**/*.html')
-		.pipe(reload({stream: true}));
-});
-
-gulp.task('watch', function() {
-	gulp.watch('builds/dev/**/*.html', ['html']).on('change', reload);
-	gulp.watch('builds/dev/**/*.js', ['js']).on('change', reload);
-	gulp.watch('builds/dev/**/*.scss', ['css']).on('change', reload);
-});
 
 gulp.task('server', function() {
 	browserSync.init({
@@ -65,9 +20,55 @@ gulp.task('server', function() {
 	});
 });
 
+// Подключаем ссылки на bower components
+gulp.task('wiredep', function () {
+	gulp.src('builds/dev/*.html')
+		.pipe(wiredep())
+		.pipe(gulp.dest('builds/dev'));
+});
+
+gulp.task('js', function() {
+	gulp.src([
+			'builds/dev/app/modules/app.js',
+			'builds/dev/app/modules/main/*.js',
+			'builds/dev/app/modules/**/*.js'])
+	    .pipe(ngAnnotate())
+	    .pipe(concat('main.js'))
+	    .pipe(gulp.dest('builds/dev/app/js'))
+	    .pipe(reload({stream: true}));
+});
+
+
+gulp.task('css', function() {
+	gulp.src('builds/dev/app/**/*.scss')
+		.pipe(sass())
+		.pipe(concat('app.css'))
+		.pipe(gulp.dest('builds/dev/app/css/'))
+		.pipe(reload({stream: true}));
+});
+
+gulp.task('html', function() {
+	gulp.src('builds/dev/**/*.html');
+		//.pipe(reload({stream: true}));
+});
+
+gulp.task('watch', function() {
+	gulp.watch('builds/dev/**/*.html', ['html']);
+	gulp.watch('builds/dev/app/modules/**/*.js', ['js']);
+	gulp.watch('builds/dev/**/*.scss', ['css']);
+	gulp.watch('bower.json', ['wiredep']);
+	gulp.watch([
+		'builds/dev/app/*.html',
+		'builds/dev/app/template/**/*.html',
+		'builds/dev/app/modules/**/*.js',
+		'builds/dev/app/css/**/*.css'
+	]).on('change', reload);
+});
+
 gulp.task('default', [
+	'server',
 	'js',
 	'css',
 	'watch',
-	'server'
+	'wiredep'
 ]);

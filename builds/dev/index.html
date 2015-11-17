@@ -2,23 +2,65 @@
 <html lang="en" ng-app='loft'>
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ngLoft application</title>
+
+    <!-- build:css css/vendor.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-datepicker/dist/angular-datepicker.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css css/main.min.css -->
+    <link rel="stylesheet" href="app/css/app.css" />
+    <!-- endbuild -->
+    <!-- build:js js/modernizr.js -->
+	<script src="bower_components/modernizer/modernizr.js"></script>
+    <!-- endbuild -->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="theme.css">
-	<link rel="stylesheet" href="app.css">
 </head>
-<body>
+
+<body ng-controller="AppCtrl">
 
 	<div class="wrapper">
 		<div class="container">
-			<ng-include src="'app/status/navbar.html'"></ng-include>
+			<ng-include src="'app/templates/main/navbar.html'"></ng-include>
 			
 			<div ui-view></div>
 
 		</div>
 	</div>
 
-	<script src="libs.js"></script>
-	<script src="app.js"></script>
+	<footer class="footer">
+     	<div class="container">
+    	<p class="text-muted">Place sticky footer content here.</p>
+    	</div>
+    </footer>
+
+		<!-- build:js js/vendor.min.js -->
+		<!-- bower:js -->
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script src="bower_components/ui-route/release/angular-ui-router.js"></script>
+		<script src="bower_components/angular-resource/angular-resource.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/firebase/firebase.js"></script>
+		<script src="bower_components/angularfire/dist/angularfire.js"></script>
+		<script src="bower_components/moment/moment.js"></script>
+		<script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+		<script src="bower_components/angular-datepicker/dist/angular-datepicker.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<!-- endbower -->
+		<!-- endbuild -->
+		<!-- build:js js/main.min.js -->
+		<script src="app/js/main.js"></script>
+		<!-- endbuild -->
+
 	
 </body>
 </html>

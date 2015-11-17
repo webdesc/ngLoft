@@ -1,5 +1,7 @@
 <h1>Пользователи</h1>
 
+<!-- <pre>{{ usr.users | json }}</pre> -->
+
 <table class="table">
 	<thead>
 		<tr>
@@ -11,12 +13,12 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="user in users">
+		<tr ng-repeat="user in usr.users">
 			<td>{{user.name}}</td>
 			<td>{{user.age}}</td>
 			<td>{{user.gender}}</td>
 			<td>{{user.eyeColor}}</td>
-			<td>{{user.balance}}</td>
+			<td>{{user.balance | converterToRub}}</td>
 		</tr>
 	</tbody>
 </table>
