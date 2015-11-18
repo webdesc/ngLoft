@@ -1,5 +1,5 @@
-	<h1>My training</h1>
-	<hr>
+<h1>My training</h1>
+<hr>
 <div class="row">
 	<div class="col-md-4">
 	<!-- <pre>{{me.user[0]|json}}</pre> -->
@@ -52,7 +52,8 @@
 		  </script>
 	</div>
 	<div class="col-md-8" ng-controller="TrackerCtrl as trck">
-		<div class="well" ng-repeat="(key, training) in trck.list">
+		<div class="training-well well" ng-repeat="(key, training) in trck.list">
+			<span class="remove-training-icon" ng-click="trck.removeTraining(training)"><i class="fa fa-times"></i></span>
 			<h3><a ui-sref="training-detail({ id: training.$id })">{{training.name}}</a></h3>
 			<p>Упражнения:</p>
 			<div class="panel panel-default" ng-repeat="(key, exercise) in training.exercises">

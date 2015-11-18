@@ -60,6 +60,23 @@ fieldset {
   margin-bottom: 15px;
   background-color: #ddd; }
 
+.training-well {
+  position: relative; }
+  .training-well .remove-training-icon {
+    display: inline-block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.4rem;
+    color: #999;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s linear; }
+  .training-well:hover .remove-training-icon {
+    visibility: visible;
+    opacity: 1; }
+
 /******** date-picker ********/
 [date-picker-wrapper] {
   min-width: 100%; }

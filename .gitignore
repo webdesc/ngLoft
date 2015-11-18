@@ -1,5 +1,5 @@
 .gulp-scss-cache
 .sass-cache
-builds\dev\bower_components
+builds/dev/bower_components
 node_modules
-builds\prod
+builds/prod

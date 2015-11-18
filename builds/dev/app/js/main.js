@@ -370,6 +370,9 @@
 			that.training.$watch(function(_trainingList) {
 				that.list = _trainingList;
 			});
+			that.removeTraining = function(item) {
+				that.list.$remove(item);
+			};
 		}
 		TrackerController.$inject = ["$scope", "Tracker"];;
 
